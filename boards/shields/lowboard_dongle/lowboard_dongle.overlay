@@ -1,0 +1,29 @@
+/ {
+    /** Shield label used by ZMK to conditionally include behavior */
+    chosen {
+        zephyr,console = &uart0;
+    };
+};
+
+/ {
+    aliases {
+        /* Define aliases used by ZMK for status LED / VBUS detection if needed */
+        led0 = &led0;
+    };
+};
+
+&gpio0 {
+    /* Example: status LED on P0.13 (change pin if Nice!Nano V2 uses different one) */
+    led0: led_0 {
+        gpios = <&gpio0 13 GPIO_ACTIVE_LOW>;
+        label = "status_led";
+    };
+};
+
+/* If you have a user button or reset button, declare it here (adjust pin) */
+&gpio0 {
+    user_btn: button_0 {
+        gpios = <&gpio0 11 GPIO_ACTIVE_LOW>;
+        label = "user_button";
+    };
+};
